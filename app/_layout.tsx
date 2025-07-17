@@ -1,15 +1,23 @@
-import { Text, View } from 'react-native';
+import { Stack } from 'expo-router';
+import { StatusBar } from 'expo-status-bar';
 import 'react-native-reanimated';
-import { ProductProvider } from '../components/ProductContext';
+import Toast from 'react-native-toast-message';
 import '../global.css';
 
 export default function RootLayout() {
-
   return (
-    <ProductProvider>
-      <View className='bg-white flex-1 items-center justify-center w-full h-full'>
-        <Text className='text-red-600'>Hey, what's up</Text>
-      </View>
-    </ProductProvider>
+    <>
+      <StatusBar style="dark" backgroundColor="#F8FFE5" />
+      <Stack
+        initialRouteName="splash"
+        screenOptions={{
+          headerShown: false,
+          gestureEnabled: false,
+        }}
+      >
+        {/* Screens will be auto-registered by expo-router */}
+      </Stack>
+      <Toast />
+    </>
   );
 }
